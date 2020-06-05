@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f8c7926cf6344079caf79cebf1d746d" Name="Diagram1" ZoomLevel="114">
+        <EntityTypeShape EntityType="CS4PEModel.Bill" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CS4PEModel.BillDetail" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CS4PEModel.Product" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="CS4PEModel.FK__BillDetai__Bill___5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="CS4PEModel.FK__BillDetai__Produ__5165187F" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CS4PEModel.AspNetRole" Width="1.5" PointX="3.375" PointY="6.5" />
+        <EntityTypeShape EntityType="CS4PEModel.AspNetUserClaim" Width="1.5" PointX="7.875" PointY="5" />
+        <EntityTypeShape EntityType="CS4PEModel.AspNetUserLogin" Width="1.5" PointX="7.875" PointY="7.75" />
+        <EntityTypeShape EntityType="CS4PEModel.AspNetUser" Width="1.5" PointX="5.625" PointY="5.375" />
+        <AssociationConnector Association="CS4PEModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CS4PEModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CS4PEModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
