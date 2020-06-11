@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@using WebApplication.Models
+<!doctype html>
 <html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
@@ -21,6 +22,11 @@
     <link rel="stylesheet" href="@Url.Content("~/assets/css/slick.css")">
     <link rel="stylesheet" href="@Url.Content("~/assets/css/nice-select.css")">
     <link rel="stylesheet" href="@Url.Content("~/assets/css/style.css")">
+    <style>
+        .shopping-card::before {
+            content: "@((Session["ShoppingCart"] as List<BillDetail>)?.Count)" !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -65,15 +71,18 @@
                                 <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
                                     <li class="d-none d-xl-block">
                                         <div class="form-box f-right ">
-                                            <input type="text" name="Search" placeholder="Search products">
-                                            <div class="search-icon">
-                                                <i class="fas fa-search special-tag"></i>
-                                            </div>
+                                            <form action="@Url.Action("Search", "Products")" method="get">
+                                                <input type="text" name="Keyword" placeholder="Search products" value="@ViewBag.Keyword">
+                                                <div class="search-icon">
+                                                    <button type="submit" class="fas fa-search special-tag"></button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="shopping-card">
-                                            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                            <a href="@Url.Action("Index", "ShoppingCart")"><i class="fas fa-shopping-cart"></i>
+                                            </a>
                                         </div>
                                     </li>
                                     <li class="d-none d-lg-block">

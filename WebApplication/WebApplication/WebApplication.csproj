@@ -173,9 +173,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AspNetRoleUserController.cs" />
     <Compile Include="Controllers\AspNetRolesController.cs" />
+    <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -658,6 +660,11 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Products\Index2.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Upload\Products\1" />
+    <Content Include="Upload\Products\32" />
+    <Content Include="Upload\Products\4" />
+    <Content Include="Views\Bill\Create.cshtml" />
+    <Content Include="Views\Bill\Index.cshtml" />
     <None Include="Views\Shared\eStore.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -702,11 +709,15 @@
     <Content Include="Views\AspNetRoles\Edit.cshtml" />
     <Content Include="Views\AspNetRoles\Index.cshtml" />
     <Content Include="Views\AspNetRoleUser\Create.cshtml" />
+    <Content Include="Views\ShoppingCart\Create.cshtml" />
+    <Content Include="Views\ShoppingCart\Delete.cshtml" />
+    <Content Include="Views\ShoppingCart\Details.cshtml" />
+    <Content Include="Views\ShoppingCart\Edit.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\blog\latest-post\" />
-    <Folder Include="Upload\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

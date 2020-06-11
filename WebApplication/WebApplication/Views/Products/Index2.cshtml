@@ -10,7 +10,7 @@
             <!-- Section Tittle -->
             <div class="col-xl-4 col-lg-5 col-md-5">
                 <div class="section-tittle mb-30">
-                    <h2>All Products</h2>
+                    <h2>@(ViewBag.Keyword != null ? "Search Results" : "All Products")</h2>
                 </div>
             </div>
         </div>
@@ -24,7 +24,9 @@
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <div class="single-product mb-60">
                                 <div class="product-img">
-                                    <img src="@Url.Action("Picture", "Products", new { product.id })" width="370px" height="400px" alt="Demo picture">
+                                    <a href="@Url.Action("Details", new { product.id })">
+                                        <img src="@Url.Action("Picture", "Products", new { product.id })" width="370px" height="400px" alt="Demo picture">
+                                    </a>
                                 </div>
                                 <div class="product-caption">
                                     <div class="product-ratting">
@@ -34,7 +36,7 @@
                                         <i class="far fa-star low-star"></i>
                                         <i class="far fa-star low-star"></i>
                                     </div>
-                                    <h4><a href="#">@product.Name</a></h4>
+                                    <h4><a href="@Url.Action("Details", new { product.id })">@product.Name</a></h4>
                                     <div class="price">
                                         <ul>
                                             <li>@product.Price.ToString("N") đ </li>

@@ -1,42 +1,51 @@
 ﻿@model WebApplication.Models.Product
-
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-    </dl>
+<div class="product_image_area" style="margin:0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="product_img_slide owl-carousel owl-loaded owl-drag">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage">
+                            <div class="owl-item cloned" style="width:370px;">
+                                <div class="single_product_img">
+                                    <img src="@Url.Action("Picture", new { Model.id })" alt="#" class="img-fluid" width="370px" height="400px" style="margin-left:auto;margin-right:auto;width:auto">
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"> <i class="ti-angle-left"></i> </button><button type="button" role="presentation" class="owl-next"><i class="ti-angle-right"></i> </button></div><div class="owl-dots disabled"></div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="single_product_text text-center">
+                    <h3>
+                        @Model.Name
+                    </h3>
+                    <p>
+                        @MvcHtmlString.Create(Model.Description)
+                    </p>
+                    <div class="card_area">
+                        <form action="@Url.Action("Create", "ShoppingCart")" method="post">
+                            <input type="hidden" name="ProductId" value="@Model.id" />
+                            <div class="product_count_area">
+                                <p>Quantity</p>
+                                <div class="product_count d-inline-block">
+                                    <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
+                                    <input name="Quantity" class="product_count_item input-number" type="text" value="1" min="0" max="10">
+                                    <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
+                                </div>
+                                <p>@Model.Price.ToString("N0") VNĐ</p>
+                            </div>
+                            <div class="add_to_cart">
+                                <input type="submit" class="btn_3" value="add to cart" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

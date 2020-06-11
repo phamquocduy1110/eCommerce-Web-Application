@@ -23,6 +23,15 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
+        public ActionResult Search(string keyword)
+        {
+            var model = db.Products.ToList();
+            model = model.Where(p => p.Name.ToLower().Contains(keyword.ToLower())).ToList();
+            ViewBag.Keyword = keyword;
+            return View("Index2", model);
+        }
+
         // for customer to view products
         [AllowAnonymous]
         public ActionResult Index2()
@@ -31,20 +40,15 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
-        // GET: Products/Details/5
         [AllowAnonymous]
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            var model = db.Products.Find(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(model);
         }
 
         [AllowAnonymous]

@@ -258,5 +258,44 @@ namespace WebApplication.Tests.Controllers
         {
             using (var controller = new ProductsController()) { }
         }
+
+        [TestMethod]
+        public void TestDetails()
+        {
+            var controller = new ProductsController();
+            var result0 = controller.Details(0) as HttpNotFoundResult;
+            Assert.IsNotNull(result0);
+
+            var db = new CS4PEntities();
+            var product = db.Products.First();
+            var result1 = controller.Details(product.id) as ViewResult;
+            Assert.IsNotNull(result1);
+
+            var model = result1.Model as Product;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(product.Name, model.Name);
+            Assert.AreEqual(product.Price, model.Price);
+            Assert.AreEqual(product.Description, model.Description);
+        }
+
+        [TestMethod]
+        public void TestSearch()
+        {
+            var db = new CS4PEntities();
+            var products = db.Products.ToList();
+            var keyword = products.First().Name.Split().First();
+            products = products.Where(p => p.Name.ToLower().Contains(keyword.ToLower())).ToList();
+
+            var controller = new ProductsController();
+            var result = controller.Search(keyword) as ViewResult;
+            Assert.IsNotNull(result);
+
+            var model = result.Model as List<Product>;
+            Assert.IsNotNull(model);
+
+            Assert.AreEqual("Index2", result.ViewName);
+            Assert.AreEqual(products.Count(), model.Count);
+            Assert.AreEqual(keyword, result.ViewData["Keyword"]);
+        }
     }
 }
